@@ -95,8 +95,7 @@ Attibuts dynamiques (Vue.js)
     - en fin de parcours
 
 ## Reste à faire
-- Clic sur bouton ___Modifier la sélection___
-    - boutons radio => désélectionnés
-    - blocs enfants => repliés
-    - récap. (summary) => maj
+- clic sur bouton ___Modifier la sélection___
+    - retour sur l'étape d'avant (N-1)
+    - mise à jour du récapitulatif du parcours
 - Externalisation du `template` dans un fichier Html
