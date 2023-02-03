@@ -1,0 +1,46 @@
+{
+    "intro": "intro",
+    "choices": [
+      {
+        "label": "question1",
+        "reponse": "réponse1"
+      },
+      {
+        "label": "question2",
+        "intro": "intro2.1/2/3",
+        "choices": [
+          {
+            "label": "question2.1",
+            "reponse": "réponse2.1"
+          },
+          {
+            "label": "question2.2",
+            "choices": [
+              {
+                "label": "question2.2.1",
+                "reponse": "réponse2.2.1"
+              },
+              {
+                "label": "question2.2.2",
+                "reponse": "réponse2.2.2"
+              }
+            ]
+          },
+          {
+            "label": "question2.3",
+            "intro": "intro3.2.1/2",
+            "choices": [
+              {
+                "label": "question3.2.1",
+                "reponse": "réponse3.2.1"
+              },
+              {
+                "label": "question3.2.2",
+                "reponse": "réponse3.2.2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

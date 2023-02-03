@@ -1,0 +1,65 @@
+{
+  "choices": [
+    {
+      "level": "1",
+      "label": "<b>choix 1</b>",
+      "choices": [
+        {
+          "level": "1.1",
+          "label": "choix 1.1",
+          "response": "réponse 1.1"
+        },
+        {
+          "level": "1.2",
+          "label": "choix 1.2",
+          "response": "réponse 1.2"
+        }
+      ]
+    },
+    {
+      "level": "2",
+      "label": "<b>choix 2</b>",
+      "intro": "intro 2.1/2/3 (choix 2)",
+      "choices": [
+        {
+          "level": "2.1",
+          "label": "choix 2.1",
+          "response": "réponse 2.1"
+        },
+        {
+          "level": "2.2",
+          "label": "choix 2.2",
+          "choices": [
+            {
+              "level": "2.2.1",
+              "label": "choix 2.2.1",
+              "response": "réponse 2.2.1"
+            },
+            {
+              "level": "2.2.2",
+              "label": "choix 2.2.2",
+              "response": "réponse 2.2.2"
+            }
+          ]
+        },
+        {
+          "level": "2.3",
+          "label": "choix 2.3",
+          "intro": "intro 2.3.1/2 (choix 2.3)",
+          "choices": [
+            {
+              "level": "2.3.1",
+              "label": "choix 2.3.1",
+              "response": "réponse 2.3.1"
+            },
+            {
+              "level": "2.3.2",
+              "label": "choix 2.3.2",
+              "response": "réponse 2.3.2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

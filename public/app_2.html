@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.min.css">
+</head>
+
+<body>
+  <div class="fr-container fr-pb-2w">
+    <div v-scope="treeItem(TreeData)" init></div>
+  </div>
+
+
+  <!-- TEMPLATE -->
+  <template id="choice-tree-template">
+    <p v-if="model.intro">
+      {{model.intro}}
+    </p>
+    <ul v-scope="itemsNumber = model.choices.length - 1" 
+        v-scope="eltOpened">
+      <li v-for="(model, index) in model.choices" 
+          :key="index" 
+          v-scope>
+        <!-- PARENT -->
+        <div>
+          <!-- Intro -->
+          <div v-if="model.intro">
+            {{model.intro}}
+          </div>
+          <!-- Label + Radio button -->
+          <div v-if="model.label" 
+                class="fr-col-12 fr-col-md-6 fr-radio-group fr-radio-group--sm questionnaire-list--item">
+            <input type="radio" 
+                    :id="`btn-radio-${model.level}`" 
+                    :name="`btn-radio-${model.level.slice(0, model.level.length - 1)}1`"
+                    :checked="isChecked"
+                    @click="displayResetButton(model.level)">
+            <label :for="`btn-radio-${model.level}`">
+              <strong>{{model.label}}</strong>
+            </label>
+          </div>
+          <!-- Response -->
+          <div v-if="model.reponse">
+            {{model.reponse}}
+          </div>
+          <!-- "Reset" button -->
+          <p v-if="index == itemsNumber" 
+              class="questionnaire-choice-reset" 
+              :hidden="isHiddenReset">
+            <button type="button" 
+                    class="fr-btn sp-btn-link" 
+                    :id="`btn-reset-${model.level}`"
+                    @click="hideResetButton">
+              Modifier la sélection
+            </button>
+          </p>
+        </div>
+        <!-- CHILDREN -->
+        <div v-if="model.choices" 
+              :hidden="model.level === eltOpened ? false : true">
+          <div v-scope="treeItem(model)"></div>
+        </div>
+      </li>
+    </ul>
+  </template>
+  <!-- TEMPLATE : end -->
+
+
+  <!-- SCRIPTS -->
+  <!-- Libraries -->
+  <script type="module" src="/node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.module.min.js"></script>
+  <script type="text/javascript" nomodule src="/node_modules/@gouvfr/dsfr/dsfr/dist/dsfr.nomodule.min.js"></script>
+  <script src="/node_modules/petite-vue/dist/petite-vue.umd.js"></script>
+  <!-- Application -->
+  <script type="module" src="./js/app_2.js"></script>
+  <!-- SCRIPTS : end -->
+</body>
+</html>

@@ -1,0 +1,27 @@
+intro = intro
+questions [0]
+  label = question1
+  réponse = réponse1
+questions [1]
+  label = question2
+  intro = intro2.1/2/3
+  questions [0]
+    label = question2.1
+    réponse = réponse2.1
+  questions [1]
+    label = question2.2
+    questions [0]
+      label = question2.2.1
+      réponse = réponse2.2.1
+    questions [1]
+      label = question2.2.2
+      réponse = réponse2.2.2
+  questions [2]
+    label = question2.3
+    intro = intro3.2.1/2
+    questions [0]
+      label = question3.2.1
+      réponse = réponse3.2.1
+    questions [1]
+      label = question3.2.2
+      réponse = réponse3.2.2

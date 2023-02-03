@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.min.css">
+</head>
+
+<body>
+  <div class="fr-container fr-pb-2w">
+    <div v-scope="treeItem(TreeData)" init></div>
+  </div>
+
+
+  <!-- TEMPLATE -->
+  <template id="choice-tree-template">
+    {{ /* 01. SUMMARY */ }}
+    <div></div>
+    
+    {{ /* 02. CHOICES LIST */ }}
+    <ul v-scope>
+      <!-- PARENT -->
+      <li v-for="(model, index) in model.choices" 
+          :key="index" 
+          v-bind="store.setAllLevels(model.level)">
+        <div>
+          <!-- Intro -->
+          <div v-if="model.intro" v-html="model.intro"></div>
+          <!-- Label + Radio button -->
+          <div v-if="model.label" 
+                class="fr-col-12 fr-col-md-6 fr-radio-group fr-radio-group--sm questionnaire-list--item">
+            <input type="radio" 
+                    :id="`btn-radio-${model.level}`" 
+                    :name="`btn-radio-${model.level.slice(0, model.level.length - 1)}1`">
+            <label :for="`btn-radio-${model.level}`" 
+                    v-html="model.label"></label>
+          </div>
+        </div>
+      </li>
+      <!-- CHILDREN -->
+      <li v-for="(model, index) in model.choices" 
+          :key="index" 
+          v-bind="store.setAllLevels(model.level)">
+        <div v-if="model.choices" v-scope="treeItem(model)"></div>
+      </li>
+    </ul>
+    
+    {{ /* 03. RESPONSE */ }}
+    <div></div>
+  </template>
+  <!-- TEMPLATE : end -->
+
+
+  <!-- SCRIPTS -->
+  <!-- Libraries -->
+  <script type="module" src="/node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.module.min.js"></script>
+  <script type="text/javascript" nomodule src="/node_modules/@gouvfr/dsfr/dsfr/dist/dsfr.nomodule.min.js"></script>
+  <script src="/node_modules/petite-vue/dist/petite-vue.umd.js"></script>
+  <!-- Application -->
+  <script type="module" src="./js/app_3.js"></script>
+  <!-- SCRIPTS : end -->
+</body>
+</html>
