@@ -1,5 +1,9 @@
 # README
 
+## API
+- Javascript ES6
+- Petite-Vue (Progressive application, ___fork___ allégé de Vue.js)
+
 ## Organisation des fichiers
 - `data.json`
     - données générées par le backend
@@ -63,10 +67,11 @@ Attibuts dynamiques (Vue.js)
 - `:key`...
 
 ## Fonctionnalités
-- affichage d'un récapitulatif (des labels) au-dessus du bloc de choix
 - clic sur un choix
+    - boutons radio
     - remplacement du bloc de choix en cours, par celui de l'étape suivante (N+1)
-- clic sur bouton `Modifier la sélection`
+    - affichage du récapitulatif du parcours (labels), au-dessus du bloc de choix
+- clic sur bouton ___Modifier la sélection___
     - retour sur l'étape d'avant (N-1)
 - affichage des intros au dessus des choix
 - affichage des réponses
@@ -74,9 +79,8 @@ Attibuts dynamiques (Vue.js)
 
 ## Reste à faire
 - Affichage
-    - récap. (champ `label` de summary)
-- Clic sur bouton `Modifier la sélection`
+- Clic sur bouton ___Modifier la sélection___
     - boutons radio => désélectionnés
     - blocs enfants => repliés
     - récap. (summary) => maj
-- Externalisation des `templates`
+- Externalisation du `template` dans un fichier Html

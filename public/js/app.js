@@ -27,7 +27,7 @@ const store = PetiteVue.reactive({
       // Intro (ajout dans tableau "allIntros")
       (item.intro) && this.allIntros.push({level: `${item.level}.1`, intro: item.intro});
       (item.response) 
-        ? item = {level: item.level, label: item.label, choices: item.choices, response: item.response}
+        ? item = {level: item.level, label: item.label, response: item.response}
         : item = {level: item.level, label: item.label, choices: item.choices};
 
       // Group
@@ -73,6 +73,14 @@ const store = PetiteVue.reactive({
     return this.currentResponse;
   }
   ,
+  getSteps() {
+    this.allItems.map(item => {
+      const ifStep = ({...item}.level && {...item}.level.toString() === this.currentChoice);
+      
+      (ifStep) && this.labelsSteps.push(item.label);
+    })
+  }
+  ,
   getChoice() {
     let isStepsNotFinished = true;
     let res = [];
@@ -81,7 +89,6 @@ const store = PetiteVue.reactive({
       const if1 = (this.currentChoice === '0' && {...item}.group.toString() === this.currentChoice);
       const if2 = (this.currentChoice !== '0' && {...item}.group.toString() === `${this.currentChoice}.1`);
       const ifResponse = ({...item}.response && {...item}.level.toString() === this.currentChoice);
-      
       // Réponses
       if (ifResponse) {
         this.currentResponse = {...item}.response;
@@ -94,7 +101,7 @@ const store = PetiteVue.reactive({
         this.lastItem = res;
       }
     });
-    console.log('getChoice() ------> lastItem: ', this.lastItem);
+    //console.log('getChoice() ------> lastItem: ', this.lastItem);
 
     if (isStepsNotFinished) return this.lastItem;
   }
@@ -107,6 +114,7 @@ const store = PetiteVue.reactive({
     this.getGroup();
     this.currentResponse = '';
     this.getChoice();
+    this.getSteps();
   }
   ,
   // DESELECTION des boutons radio

@@ -21,9 +21,9 @@
     <div>
       <h4>RECAPITULATIF</h4>
       <p>currentChoice: {{store.currentChoice}}</p>
-      <ul>
+      <ul v-if="store.labelsSteps">
         <li v-for="step in store.labelsSteps">
-          <p>{{step}}</p>
+          <p v-html="step"></p>
         </li>
       </ul>
     </div>
