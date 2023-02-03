@@ -34,6 +34,15 @@
         <template v-for="(model, index) in store.getChoice()" 
                   :key="index">
           <div>
+            {{ /* "Reset" button */ }}
+            <!--<div v-if="index === 0" 
+                class="questionnaire-choice-reset">
+              <button type="button" 
+                      class="fr-btn sp-btn-link" 
+                      :id="`btn-reset-${model.group}`">
+                Modifier la sélection
+              </button>
+            </div>-->
             {{ /* Intro */ }}
             <legend v-if="store.allIntros && store.chooseIntro(model.level)" 
                 v-html="store.chooseIntro(model.level)"></legend>

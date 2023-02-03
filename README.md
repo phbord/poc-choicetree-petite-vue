@@ -73,12 +73,12 @@ Attibuts dynamiques (Vue.js)
     - affichage du récapitulatif du parcours (labels), au-dessus du bloc de choix
 - clic sur bouton ___Modifier la sélection___
     - retour sur l'étape d'avant (N-1)
+    - mise à jour du récapitulatif du parcours
 - affichage des intros au dessus des choix
 - affichage des réponses
     - en fin de parcours
 
 ## Reste à faire
-- Affichage
 - Clic sur bouton ___Modifier la sélection___
     - boutons radio => désélectionnés
     - blocs enfants => repliés

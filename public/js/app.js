@@ -16,6 +16,13 @@ const store = PetiteVue.reactive({
   allIntros: [],
   labelsSteps: []
   ,
+  // DESELECTION des boutons radio
+  uncheckRadioButtons() {
+    [...document.querySelectorAll('input[data-type="radio"]')].forEach(element => {
+      element.checked = false;
+    });
+  }
+  ,
   // REMPLI "allItems" avec tous les éléments linéaires
   setAllItems(model) {
     if (this.isAllItemsFull) return;
@@ -81,6 +88,8 @@ const store = PetiteVue.reactive({
     })
   }
   ,
+  launchPrevStep() {}
+  ,
   getChoice() {
     let isStepsNotFinished = true;
     let res = [];
@@ -89,6 +98,7 @@ const store = PetiteVue.reactive({
       const if1 = (this.currentChoice === '0' && {...item}.group.toString() === this.currentChoice);
       const if2 = (this.currentChoice !== '0' && {...item}.group.toString() === `${this.currentChoice}.1`);
       const ifResponse = ({...item}.response && {...item}.level.toString() === this.currentChoice);
+
       // Réponses
       if (ifResponse) {
         this.currentResponse = {...item}.response;
@@ -115,13 +125,6 @@ const store = PetiteVue.reactive({
     this.currentResponse = '';
     this.getChoice();
     this.getSteps();
-  }
-  ,
-  // DESELECTION des boutons radio
-  uncheckRadioButtons() {
-    [...document.querySelectorAll('input[data-type="radio"]')].forEach(element => {
-      element.checked = false;
-    });
   }
 });
 
