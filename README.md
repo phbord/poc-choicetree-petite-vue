@@ -3,6 +3,7 @@
 ## API
 - Javascript ES6
 - Petite-Vue (Progressive application, ___fork___ allégé de Vue.js)
+    - https://github.com/vuejs/petite-vue
 
 ## Organisation des fichiers
 - `data.json`
