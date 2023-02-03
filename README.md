@@ -27,7 +27,9 @@
 import TreeData from '../data/data.json' assert { type: "json" };
 const TreeData = await fetchData();
 `
+
 ou
+
 `
 const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
                   .then(res => res.json())
