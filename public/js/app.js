@@ -1,8 +1,8 @@
 // DONNEES
 //import TreeData from '../data/data.json' assert { type: "json" };
-const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+/* const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
                   .then(res => res.json())
-                  .catch(err => console.log(err));
+                  .catch(err => console.log(err)); */
 const TreeData = await fetchData();
 
 
@@ -27,7 +27,7 @@ const store = PetiteVue.reactive({
   setAllItems(model) {
     if (this.isAllItemsFull) return;
 
-    model.choices.map(item => {
+    model?.choices?.map(item => {
       const levelSplit = item.level.split('.');
       let groupObj = { "group": this.currentChoice };
 
@@ -88,7 +88,22 @@ const store = PetiteVue.reactive({
     })
   }
   ,
-  launchPrevStep() {}
+  // RETOUR au choix précédent (au Clic)
+  returnPrevStep() {
+    this.labelsSteps.pop();
+    this.currentResponse = '';
+
+    if (this.currentChoice.split('.').length === 1) {
+      this.currentChoice = '0';
+    }
+    else {
+      const newChoice = this.currentChoice.split('.')
+                                          .filter((item, index) => index < this.currentChoice.split('.').length - 1);
+      this.currentChoice = newChoice.join('.');
+    }
+
+    this.getChoice();
+  }
   ,
   getChoice() {
     let isStepsNotFinished = true;

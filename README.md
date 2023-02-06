@@ -3,7 +3,9 @@
 ## API
 - Javascript ES6
 - Petite-Vue (Progressive application, ___fork___ allégé de Vue.js)
-    - https://github.com/vuejs/petite-vue
+
+## Ressources
+- https://github.com/vuejs/petite-vue
 
 ## Organisation des fichiers
 - `data.json`
@@ -13,8 +15,9 @@
     - stockage des variables et fonctions
 - `app.html`
     - page générale
-    - template Petite-Vue et ses intéractions
-    - bloc intégrant le template
+    - appel du fichier Json
+    - template `#choice-tree-template` (Petite-Vue et ses intéractions)
+    - bloc `#app` où sera injecté le template
 
 ## Champs de `data.json`
 - `choices`(array)
@@ -83,6 +86,12 @@ Attibuts dynamiques (Vue.js)
 - `:key`...
 
 ## Fonctionnalités
+- appel au fichier Json, à la fin de la page Html (`app.html`)
+```
+const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+                            .then(res => res.json())
+                            .catch(err => console.log(err));
+```
 - clic sur un choix
     - boutons radio
     - remplacement du bloc de choix en cours, par celui de l'étape suivante (N+1)
@@ -95,7 +104,4 @@ Attibuts dynamiques (Vue.js)
     - en fin de parcours
 
 ## Reste à faire
-- clic sur bouton ___Modifier la sélection___
-    - retour sur l'étape d'avant (N-1)
-    - mise à jour du récapitulatif du parcours
-- Externalisation du `template` dans un fichier Html
+- Externalisation du `template` du fichier `app.html`

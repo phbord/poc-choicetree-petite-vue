@@ -28,6 +28,16 @@
           <p v-html="step"></p>
         </li>
       </ul>
+      {{ /* "Reset" button */ }}
+      <div v-if="store.currentResponse" 
+            class="questionnaire-choice-reset">
+        <button type="button" 
+                class="fr-btn sp-btn-link" 
+                id="btn-reset-last"
+                @click="store.returnPrevStep()">
+          Modifier la sélection
+        </button>
+      </div>
     </div>
     
     {{ /* 02. CHOICES BLOCK */ }}
@@ -37,14 +47,15 @@
                   :key="index">
           <div>
             {{ /* "Reset" button */ }}
-            <!--<div v-if="index === 0" 
-                class="questionnaire-choice-reset">
+            <div v-if="index === 0 && store.currentChoice != 0" 
+                  class="questionnaire-choice-reset">
               <button type="button" 
                       class="fr-btn sp-btn-link" 
-                      :id="`btn-reset-${model.group}`">
+                      :id="`btn-reset-${model.group}`"
+                      @click="store.returnPrevStep()">
                 Modifier la sélection
               </button>
-            </div>-->
+            </div>
             {{ /* Intro */ }}
             <legend v-if="store.allIntros && store.chooseIntro(model.level)" 
                 v-html="store.chooseIntro(model.level)"></legend>
@@ -80,6 +91,12 @@
   <script type="text/javascript" nomodule src="/node_modules/@gouvfr/dsfr/dsfr/dist/dsfr.nomodule.min.js"></script>
   <script src="/node_modules/petite-vue/dist/petite-vue.umd.js"></script>
   <!-- Application -->
+  <script type="text/javascript">
+    //import TreeData from '../data/data.json' assert { type: "json" };
+    const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+                      .then(res => res.json())
+                      .catch(err => console.log(err));
+  </script>
   <script type="module" src="./js/app.js"></script>
   <!-- SCRIPTS : end -->
 </body>
