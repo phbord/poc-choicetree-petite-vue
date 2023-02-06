@@ -88,7 +88,7 @@ Attibuts dynamiques (Vue.js)
 ## Fonctionnalités
 - appel au fichier Json, à la fin de la page Html (`app.html`)
 ```
-const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+const fetchData = () => fetch('/public/data/data.json')
                             .then(res => res.json())
                             .catch(err => console.log(err));
 ```
@@ -105,3 +105,5 @@ const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
 
 ## Reste à faire
 - Externalisation du `template` du fichier `app.html`
+- intro doivent être également dans le récap, cad au-dessus du label
+- boutons  ___Modifier la sélection___ placés à côté de chaque étape du récap.

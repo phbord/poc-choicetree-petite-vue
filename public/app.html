@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>POC Choice Tree</title>
   <link rel="stylesheet" href="/node_modules/@gouvfr/dsfr/dist/dsfr/dsfr.min.css">
 </head>
 
@@ -93,7 +92,7 @@
   <!-- Application -->
   <script type="text/javascript">
     //import TreeData from '../data/data.json' assert { type: "json" };
-    const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+    const fetchData = () => fetch('/public/data/data.json')
                       .then(res => res.json())
                       .catch(err => console.log(err));
   </script>

@@ -1,6 +1,6 @@
 // DONNEES
 //import TreeData from '../data/data.json' assert { type: "json" };
-/* const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+/* const fetchData = () => fetch('/public/data/data.json')
                   .then(res => res.json())
                   .catch(err => console.log(err)); */
 const TreeData = await fetchData();
