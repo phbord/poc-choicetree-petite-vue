@@ -5,7 +5,8 @@
 - Petite-Vue (Progressive application, ___fork___ allégé de Vue.js)
 
 ## Ressources
-- https://github.com/vuejs/petite-vue
+- github du POC : https://github.com/phbord/poc-choicetree-petite-vue
+- github de la librairie : https://github.com/vuejs/petite-vue
 
 ## Organisation des fichiers
 - `data.json`
@@ -35,7 +36,7 @@ const TreeData = await fetchData();
 ou
 
 ```
-const fetchData = () => fetch('http://127.0.0.1:5500/public/data/data.json')
+const fetchData = () => fetch('/public/data/data.json')
                   .then(res => res.json())
                   .catch(err => console.log(err));
 const TreeData = await fetchData();
@@ -105,5 +106,7 @@ const fetchData = () => fetch('/public/data/data.json')
 
 ## Reste à faire
 - Externalisation du `template` du fichier `app.html`
+    - web components => ___n'a pas l'air de fonctionner___
+    - mixin (Twig) ?
 - intro doivent être également dans le récap, cad au-dessus du label
 - boutons  ___Modifier la sélection___ placés à côté de chaque étape du récap.

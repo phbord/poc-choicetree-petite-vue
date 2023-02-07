@@ -85,22 +85,20 @@ const store = PetiteVue.reactive({
       const ifStep = ({...item}.level && {...item}.level.toString() === this.currentChoice);
       
       (ifStep) && this.labelsSteps.push(item.label);
-    })
+    });
   }
   ,
   // RETOUR au choix précédent (au Clic)
-  returnPrevStep() {
-    this.labelsSteps.pop();
+  returnPrevStep(currentIndex) {
     this.currentResponse = '';
+    this.labelsSteps = this.labelsSteps.filter((item, index) => index < currentIndex);
 
-    if (this.currentChoice.split('.').length === 1) {
-      this.currentChoice = '0';
-    }
-    else {
-      const newChoice = this.currentChoice.split('.')
-                                          .filter((item, index) => index < this.currentChoice.split('.').length - 1);
-      this.currentChoice = newChoice.join('.');
-    }
+    const newChoice = this.currentChoice
+                        .split('.')
+                        .filter((item, index) => index < currentIndex);
+    newChoice.length > 0 
+      ? this.currentChoice = newChoice.join('.') 
+      : this.currentChoice = '0';
 
     this.getChoice();
   }

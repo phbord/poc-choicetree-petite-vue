@@ -18,67 +18,63 @@
 
   <!-- TEMPLATE -->
   <template id="choice-tree-template">
+    <p>currentChoice: {{store.currentChoice}}</p>
+
     {{ /* 01. SUMMARY */ }}
     <div>
-      <h4>RECAPITULATIF</h4>
-      <p>currentChoice: {{store.currentChoice}}</p>
-      <ul v-if="store.labelsSteps">
-        <li v-for="step in store.labelsSteps">
-          <p v-html="step"></p>
+      <ul v-if="store.labelsSteps" 
+          class="fr-raw-list fr-mb-4w">
+        <li v-for="(step, index) in store.labelsSteps"
+            :key="index"
+            class="fr-mb-1w">
+          {{ /* Label */ }}
+          <span v-html="step"></span>
+          {{ /* "Reset" button */ }}
+          <button type="button" 
+                  class="fr-btn" 
+                  id="btn-reset-last"
+                  v-if="store.currentChoice != 0"
+                  @click="store.returnPrevStep(index)">
+            Modifier la sélection
+          </button>
         </li>
       </ul>
-      {{ /* "Reset" button */ }}
-      <div v-if="store.currentResponse" 
-            class="questionnaire-choice-reset">
-        <button type="button" 
-                class="fr-btn sp-btn-link" 
-                id="btn-reset-last"
-                @click="store.returnPrevStep()">
-          Modifier la sélection
-        </button>
-      </div>
     </div>
     
     {{ /* 02. CHOICES BLOCK */ }}
-    <div v-bind="store.setAllItems(model)">
-        <h4>CHOIX</h4>
+    <div v-bind="store.setAllItems(model)"
+          class="fr-form-group">
+      <fieldset class="fr-fieldset">
         <template v-for="(model, index) in store.getChoice()" 
                   :key="index">
           <div>
-            {{ /* "Reset" button */ }}
-            <div v-if="index === 0 && store.currentChoice != 0" 
-                  class="questionnaire-choice-reset">
-              <button type="button" 
-                      class="fr-btn sp-btn-link" 
-                      :id="`btn-reset-${model.group}`"
-                      @click="store.returnPrevStep()">
-                Modifier la sélection
-              </button>
-            </div>
             {{ /* Intro */ }}
             <legend v-if="store.allIntros && store.chooseIntro(model.level)" 
-                v-html="store.chooseIntro(model.level)"></legend>
+                v-html="store.chooseIntro(model.level)" 
+                class="fr-fieldset__legend fr-text--regular" 
+                id='radio-legend'></legend>
             {{ /* Label + Radio button */ }}
             <div v-if="model.label" 
-                  class="fr-col-12 fr-col-md-6 fr-radio-group fr-radio-group--sm questionnaire-list--item">
+                  class="fr-radio-group">
               <input type="radio" 
                       data-type="radio"
                       :id="`btn-radio-${model.level}`" 
                       :name="`btn-radio-${model.group}`"
                       @click="store.nextChoice(model.level)">
               <label :for="`btn-radio-${model.level}`" 
-                      v-html="model.label"></label>
+                      v-html="model.label"
+                      class="fr-label"></label>
             </div>
           </div>
         </template>
-      </div>
+      </fieldset>
+    </div>
     
     {{ /* 03. RESPONSE */ }}
-    <div>
-      <h4>REPONSES</h4>
-      <p v-if="store.currentResponse">
-        {{store.currentResponse}}
-      </p>
+    <div v-if="store.currentResponse" 
+          class="fr-alert fr-alert--info">
+      <h3 class="fr-alert__title">Réponse</h3>
+      <p v-html="store.currentResponse"></p>
     </div>
   </template>
   <!-- TEMPLATE : end -->
