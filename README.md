@@ -108,5 +108,8 @@ const fetchData = () => fetch('/public/data/data.json')
 - Externalisation du `template` du fichier `app.html`
     - web components => ___n'a pas l'air de fonctionner___
     - mixin (Twig) ?
-- intro doivent être également dans le récap, cad au-dessus du label
-- boutons  ___Modifier la sélection___ placés à côté de chaque étape du récap.
+- intégration
+    - autres éléments
+    - modals
+    - Twig
+    - Css

@@ -14,7 +14,8 @@ const store = PetiteVue.reactive({
   lastItem: {},
   allItems: [],
   allIntros: [],
-  labelsSteps: []
+  labelsSteps: [],
+  introsSteps: []
   ,
   // DESELECTION des boutons radio
   uncheckRadioButtons() {
@@ -29,13 +30,21 @@ const store = PetiteVue.reactive({
 
     model?.choices?.map(item => {
       const levelSplit = item.level.split('.');
+      const introItem = item.intro;
+      let introObj = {};
       let groupObj = { "group": this.currentChoice };
 
       // Intro (ajout dans tableau "allIntros")
-      (item.intro) && this.allIntros.push({level: `${item.level}.1`, intro: item.intro});
+      (introItem) && this.allIntros.push({level: `${item.level}.1`, intro: introItem});
       (item.response) 
         ? item = {level: item.level, label: item.label, response: item.response}
         : item = {level: item.level, label: item.label, choices: item.choices};
+
+      // Intro (utilisés dans le Récapitulatif)
+      if (introItem) {
+        introObj = { introStep: introItem };
+        item = Object.assign(introObj, item);
+      }
 
       // Group
       if (levelSplit.length > 1) {
@@ -50,7 +59,7 @@ const store = PetiteVue.reactive({
       // RECURSIVITE dans les enfants existants
       item.choices && this.setAllItems(item);
     });
-    //console.log('setAllItems(model) ------> allItems: ', this.allItems);
+    //console.log('------> allItems: ', this.allItems);
   }
   ,
   chooseIntro(level) {
@@ -83,8 +92,11 @@ const store = PetiteVue.reactive({
   getSteps() {
     this.allItems.map(item => {
       const ifStep = ({...item}.level && {...item}.level.toString() === this.currentChoice);
-      
+      // Labels
       (ifStep) && this.labelsSteps.push(item.label);
+      // Intros
+      ({...item}.introStep && ifStep) && this.introsSteps.push(item.introStep);
+      
     });
   }
   ,
@@ -124,7 +136,7 @@ const store = PetiteVue.reactive({
         this.lastItem = res;
       }
     });
-    //console.log('getChoice() ------> lastItem: ', this.lastItem);
+    //console.log('------> lastItem: ', this.lastItem);
 
     if (isStepsNotFinished) return this.lastItem;
   }

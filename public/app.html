@@ -9,17 +9,16 @@
 </head>
 
 <body>
-  <div id="app-template"></div>
-
-  <div class="fr-container fr-pb-2w">
-    <div id="app" v-scope="treeItem(TreeData)" init></div>
+  <div class="sp-container">
+    <div class="fr-container fr-pb-2w">
+      <div id="app" v-scope="treeItem(TreeData)" init></div>
+    </div>
   </div>
 
 
   <!-- TEMPLATE -->
   <template id="choice-tree-template">
-    <p>currentChoice: {{store.currentChoice}}</p>
-
+    <h1>POC choice tree</h1>
     {{ /* 01. SUMMARY */ }}
     <div>
       <ul v-if="store.labelsSteps" 
@@ -27,6 +26,10 @@
         <li v-for="(step, index) in store.labelsSteps"
             :key="index"
             class="fr-mb-1w">
+          {{ /* Intro */ }}
+          <p v-if="store.introsSteps[index]" 
+              v-html="store.introsSteps[index]"
+              class="fr-h6"></p>
           {{ /* Label */ }}
           <span v-html="step"></span>
           {{ /* "Reset" button */ }}
