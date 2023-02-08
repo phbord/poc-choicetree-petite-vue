@@ -31,12 +31,12 @@
               v-html="store.introsSteps[index]"></div>
           {{ /* Label */ }}
           <strong v-html="step"
-                :id="`choice-${'LEVEL'}-${index}`"></strong>
+                :id="`choicetree-label-${index}`"></strong>
           {{ /* "Reset" button */ }}
           <button type="button" 
                   class="fr-btn fr-btn--tertiary-no-outline" 
                   v-if="store.currentChoice != 0"
-                  :aria-describedby="`choice-${'LEVEL'}-${index}`"
+                  :aria-describedby="`choicetree-label-${index}`"
                   @click="store.returnPrevStep(index)">
             Modifier
           </button>

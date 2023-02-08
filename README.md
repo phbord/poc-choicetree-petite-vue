@@ -24,6 +24,11 @@ License [Etalab](https://github.com/etalab/licence-ouverte/blob/master/LO.md)
     - Petite-Vue - Simple component => https://codepen.io/phbord/pen/LYBOPdV
     - Petite-Vue - Components with Template => https://codepen.io/phbord/pen/RwBjbjG?editors=1010
 
+## Tests Unitaires
+- Vitest => https://vitest.dev/
+- Jest => https://jestjs.io/fr/
+- Vue-test-utils => https://github.com/vuejs/vue-test-utils
+
 ## Organisation des fichiers
 - `data.json`
     - données générées par le backend
@@ -123,11 +128,12 @@ const fetchData = () => fetch('/public/data/data.json')
     - en fin de parcours
 
 ## Reste à faire
-- Externalisation du `template` du fichier `app.html`
+- Externalisation du `<template>` du fichier `app.html`
     - web components => ___n'a pas l'air de fonctionner___
     - mixin (Twig) ?
-- intégration
+- Intégration
     - autres éléments
     - modals
     - Twig
     - Css
+- Tests Unitaires

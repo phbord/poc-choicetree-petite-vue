@@ -8,6 +8,7 @@ const TreeData = await fetchData();
 
 const store = PetiteVue.reactive({
   isAllItemsFull: false,
+  isIntrosStepsFirstIndex: true,
   currentResponse: '',
   currentGroup: '',
   currentChoice: '0',
@@ -96,14 +97,19 @@ const store = PetiteVue.reactive({
       (ifStep) && this.labelsSteps.push(item.label);
       // Intros
       ({...item}.introStep && ifStep) && this.introsSteps.push(item.introStep);
-      
     });
+
+    this.isIntrosStepsFirstIndex && this.introsSteps.unshift('');
+    this.isIntrosStepsFirstIndex = false;
+    console.log('------> this.introsSteps: ', this.introsSteps);
   }
   ,
   // RETOUR au choix précédent (au Clic)
   returnPrevStep(currentIndex) {
     this.currentResponse = '';
     this.labelsSteps = this.labelsSteps.filter((item, index) => index < currentIndex);
+    this.introsSteps = this.introsSteps.filter((item, index) => index <= currentIndex);
+    console.log('=======> this.introsSteps: ', this.introsSteps);
 
     const newChoice = this.currentChoice
                         .split('.')
