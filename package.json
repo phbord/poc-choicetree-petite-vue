@@ -6,7 +6,8 @@
     "start": "npm run serve",
     "serve": "serve"
   },
-  "author": "",
+  "author": "Pierre-Henri Bord",
+  "email": "phbord@gmail.com",
   "license": "etalab",
   "dependencies": {
     "@gouvfr/dsfr": "^1.3.1",
