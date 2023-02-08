@@ -113,6 +113,7 @@ const store = PetiteVue.reactive({
       : this.currentChoice = '0';
 
     this.getChoice();
+    //console.log('------> currentChoice: ', this.currentChoice);
   }
   ,
   getChoice() {

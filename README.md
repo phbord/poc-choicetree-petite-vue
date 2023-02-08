@@ -2,11 +2,23 @@
 
 ## API
 - Javascript ES6
-- Petite-Vue (Progressive application, ___fork___ allégé de Vue.js)
+- Petite-Vue (Progressive enhancement application, ___fork___ allégé de Vue.js)
 
 ## Ressources
 - github du POC : https://github.com/phbord/poc-choicetree-petite-vue
 - github de la librairie : https://github.com/vuejs/petite-vue
+- documentation Petite-Vue :
+    - https://www.npmjs.com/package/petite-vue#comparison-with-standard-vue
+    - https://www.notion.so/phbord/Petite-Vue-30544ff0d7cb4d3788b0d29bbb7754ab
+    - https://cours.brosseau.ovh/tp/vuejs3/petite-vue.html
+    - https://www.programmez.com/actualites/petite-vue-une-bibliotheque-legere-inspiree-de-vuejs-32684
+- documentation Vue.js :
+    - https://vuejs.org
+    - https://www.notion.so/phbord/Vue-66ac208d0ada44a88ea32e5fb1a6b8d0
+- exemples :
+    - Petite-Vue - Global State Management => https://codepen.io/phbord/pen/bGjYNpN
+    - Petite-Vue - Simple component => https://codepen.io/phbord/pen/LYBOPdV
+    - Petite-Vue - Components with Template => https://codepen.io/phbord/pen/RwBjbjG?editors=1010
 
 ## Organisation des fichiers
 - `data.json`
@@ -46,6 +58,8 @@ const TreeData = await fetchData();
 
 Champs générés ___dynamiquement___ :
 - `group`
+- `introStep`
+- `intro` (déplacé dans la variable `allItems`)
 
 Champs obligatoires :
 - `level`
