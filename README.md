@@ -1,5 +1,9 @@
 # README
 
+## Licence
+
+License [Etalab](https://github.com/etalab/licence-ouverte/blob/master/LO.md)
+
 ## API
 - Javascript ES6
 - Petite-Vue (Progressive enhancement application, ___fork___ allégé de Vue.js)
