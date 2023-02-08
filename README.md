@@ -128,7 +128,7 @@ const fetchData = () => fetch('/public/data/data.json')
     - en fin de parcours
 
 ## Reste à faire
-- Externalisation du `<template>` du fichier `app.html`
+- Externalisation du `<template id="choice-tree-template">...</template>` du fichier `app.html`
     - web components => ___n'a pas l'air de fonctionner___
     - mixin (Twig) ?
 - Intégration
