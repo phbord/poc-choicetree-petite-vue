@@ -86,13 +86,14 @@
   <script src="/node_modules/petite-vue/dist/petite-vue.umd.js"></script>
 
   <!-- Application -->
-  <script type="text/javascript">
-    //import TreeData from '../data/data.json' assert { type: "json" };
-    const fetchData = () => fetch('/public/data/data.json')
-                      .then(res => res.json())
-                      .catch(err => console.log(err));
+  <script type="module">
+    import initChoicetree from './js/choicetree.js';
+
+    const dataUrl = '/public/data/choicetree-data.json';
+    const appId = '#app';
+    const templateId = '#choice-tree-template';
+    initChoicetree(dataUrl, appId, templateId);
   </script>
-  <script type="module" src="./js/app.js"></script>
   <!-- SCRIPTS : end -->
 </body>
 </html>

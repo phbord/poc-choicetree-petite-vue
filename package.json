@@ -4,7 +4,8 @@
   "description": "Poc abre de choix pour sp",
   "scripts": {
     "start": "npm run serve",
-    "serve": "serve"
+    "serve": "serve",
+    "test": "jasmine"
   },
   "author": "Pierre-Henri Bord",
   "email": "phbord@gmail.com",
@@ -14,6 +15,8 @@
     "petite-vue": "^0.4.1"
   },
   "devDependencies": {
+    "jasmine": "^4.5.0",
     "serve": "^14.1.2"
-  }
+  },
+  "type": "module"
 }

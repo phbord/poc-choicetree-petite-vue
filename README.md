@@ -25,14 +25,29 @@ License [Etalab](https://github.com/etalab/licence-ouverte/blob/master/LO.md)
     - Petite-Vue - Components with Template => https://codepen.io/phbord/pen/RwBjbjG?editors=1010
 
 ## Tests Unitaires
+
+### Fonctionnalités à tester
+- chargement de la page => création et remplissage du tableau `allItems`
+- clic => boutons radio de choix
+- clic => boutons de retour
+
+### librairies
+- Jasmine => https://jasmine.github.io/
 - Vitest => https://vitest.dev/
 - Jest => https://jestjs.io/fr/
 - Vue-test-utils => https://github.com/vuejs/vue-test-utils
 
+### Tutoriels
+- Starter : https://github.com/misitebao/vite-petite-vue-starter
+- Tutoriel : https://www.vuemastery.com/blog/getting-started-with-vitest/
+
+### Commandes
+- lancer les tests : `npm test`
+
 ## Organisation des fichiers
-- `data.json`
+- `choicetree-data.json`
     - données générées par le backend
-- `app.js`
+- `choicetree.js`
     - initialisation et chargement des données et de l'application
     - stockage des variables et fonctions
 - `app.html`
@@ -41,23 +56,23 @@ License [Etalab](https://github.com/etalab/licence-ouverte/blob/master/LO.md)
     - template `#choice-tree-template` (Petite-Vue et ses intéractions)
     - bloc `#app` où sera injecté le template
 
-## Champs de `data.json`
+## Champs de `choicetree-data.json`
 - `choices`(array)
 - `level` (string)
 - `label` (string)
 - `intro` (string)
 - `response` (string)
 
-## Intégrer les données dans `app.js`
+## Intégrer les données dans `choicetree.js`
 ```
-import TreeData from '../data/data.json' assert { type: "json" };
+import TreeData from '../data/choicetree-data.json' assert { type: "json" };
 const TreeData = await fetchData();
 ```
 
 ou
 
 ```
-const fetchData = () => fetch('/public/data/data.json')
+const fetchData = () => fetch('/public/data/choicetree-data.json')
                   .then(res => res.json())
                   .catch(err => console.log(err));
 const TreeData = await fetchData();
@@ -112,7 +127,7 @@ Attibuts dynamiques (Vue.js)
 ## Fonctionnalités
 - appel au fichier Json, à la fin de la page Html (`app.html`)
 ```
-const fetchData = () => fetch('/public/data/data.json')
+const fetchData = () => fetch('/public/data/choicetree-data.json')
                             .then(res => res.json())
                             .catch(err => console.log(err));
 ```
@@ -136,4 +151,4 @@ const fetchData = () => fetch('/public/data/data.json')
     - modals
     - Twig
     - Css
-- Tests Unitaires
+- Tests Unitaires avec Jasmine
